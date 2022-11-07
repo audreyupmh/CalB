@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audrey - Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="col-3">
+
+            <input type="text" class="form-control" id="cajita">
+            <hr>
+
+            <div class="mt-1">
+                <button class="btn btn-warning" onclick="acBot(1)"> 1 </button>
+                <button class="btn btn-warning" onclick="acBot(2)"> 2 </button>
+                <button class="btn btn-warning" onclick="acBot(3)"> 3 </button>
+                <button class="btn btn-dark" onclick="sumBot()"> + </button>
+                <button class="btn btn-dark" onclick="potBot()"> ^ </button>
+            </div>
+            
+            <div class="mt-1">
+                <button class="btn btn-warning" onclick="acBot(4)"> 4 </button>
+                <button class="btn btn-warning" onclick="acBot(5)"> 5 </button>
+                <button class="btn btn-warning" onclick="acBot(6)"> 6 </button>
+                <button class="btn btn-dark" onclick="restBot()"> - </button>
+                <button class="btn btn-dark" onclick="raBot()"> √ </button>
+            </div>
+            
+            <div class="mt-1">
+                <button class="btn btn-warning" onclick="acBot(7)"> 7 </button>
+                <button class="btn btn-warning" onclick="acBot(8)"> 8 </button>
+                <button class="btn btn-warning" onclick="acBot(9)"> 9 </button>
+                <button class="btn btn-dark" onclick="multBot()"> * </button>
+                <button class="btn btn-dark" onclick="cosBot()"> COS </button>
+            
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-warning" onclick="acBot(0)"> 0 </button>
+                <button class="btn btn-outline-dark" onclick="acRes()"> = </button>
+                <button class="btn btn-secondary" onclick="acClear()"> C </button>
+                <button class="btn btn-dark" onclick="divBot()"> / </button>
+                <button class="btn btn-dark" onclick="tanBot()"> TAN </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    
+    <script>
+        //$("#cajita").val("Hey!");
+
+        var jvalor = "";
+        var acum = "";
+        var opera  = 0;
+
+        function acRes(){
+                if(opera == 1){
+                    aux = parseInt(acum) + parseInt(jvalor);
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 2){
+                    aux = parseInt(acum) - parseInt(jvalor);
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 3){
+                    aux = parseInt(acum) / parseInt(jvalor);
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 4){
+                    aux = parseInt(acum) * parseInt(jvalor);
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 5){
+                    aux = Math.pow(parseInt(acum), parseInt(jvalor));
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 6){
+                    aux = Math.sqrt(parseInt(acum));
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 7){
+                    aux = Math.cos(parseInt(jvalor));
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+
+                if(opera == 8){
+                    aux = Math.tan(parseInt(jvalor));
+                    $("#cajita").val(aux);
+                    jvalor = aux;
+                    opera = 0;
+                }
+            }
+
+        function sumBot(){
+            //a + b
+            acum = jvalor;
+            opera = 1;
+            acClear();
+        }
+
+        function restBot(){
+            //a - b
+            acum = jvalor;
+            opera = 2;
+            acClear();
+        }
+
+        function divBot(){
+            //a / b
+            acum = jvalor;
+            opera = 3;
+            acClear();
+        }
+
+        function multBot(){
+            //a * b
+            acum = jvalor;
+            opera = 4;
+            acClear();
+        }
+
+        function potBot(){
+            //a ^ b
+            acum = jvalor;
+            opera = 5;
+            acClear();
+        }
+        
+        function raBot(){
+            //√a
+            acum = jvalor;
+            opera = 6;
+            acClear();
+        }
+
+        function cosBot(){
+            //COS a
+            acum = jvalor;
+            opera = 7;
+            acClear();
+        }
+         
+        function tanBot(){
+            //TAN a
+            acum = jvalor;
+            opera = 8;
+            acClear();
+        }
+
+        function acBot( valor ){
+            jvalor = jvalor + valor;
+
+            $("#cajita").val(jvalor);
+            //alert( valor );
+        }
+
+        function acClear(){
+            $("#cajita").val("");
+            jvalor = "";
+        } 
+    </script>
+</body>
+</html>
